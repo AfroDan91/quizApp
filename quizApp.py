@@ -9,14 +9,14 @@ quizCategory = "General Knowledge"
 questionList = []
 
 #correct check
-def mark(panswer, canswer): #this function evluates if the answer is correct 
+def mark(panswer, canswer): #this function evaluates if the answer is correct 
     if canswer.lower() == panswer.lower():  #if correct answer is same as users answer
         return "correct"
     else:
         return "incorrect"
 
 #turn csv into nested list of questions e.g. [[q,a],[q,a],[q,a]]
-def createQList(reader): #recieves csv
+def createQList(reader): #receives csv
     for row in reader: #loop through each row and make a list of questions
         question = [row[0],row[1]] #get each question and answer as a list
         questionList.append(question) #nest each list into 1 over all list
