@@ -15,15 +15,18 @@ def mark(panswer, canswer): #this function evluates if the answer is correct
     else:
         return "incorrect"
 
- #check if there has been a category chosen
+#turn csv into nested list of questions e.g. [[q,a],[q,a],[q,a]]
+def createQList(reader): #recieves csv
+    for row in reader: #loop through each row and make a list of questions
+        question = [row[0],row[1]] #get each question and answer as a list
+        questionList.append(question) #nest each list into 1 over all list
+
+#check if there has been a category chosen
 if len(sys.argv) > 1 : #category chosen
     quizCategory = str(sys.argv[1]) #record the name of the category
     with open(f"{sys.argv[1]}.csv", newline='') as f: # open the csv of the chosen category
         reader = csv.reader(f)
-        for row in reader: #loop through each row and make a list of questions
-            question = [row[0],row[1]] #get each question and answer as a list
-            questionList.append(question) #nest each list into 1 over all list
-    print(questionList)
+        createQList(reader)
 
 else: #no category chosen
     path = r'C:\Users\danie\Desktop\Python training\quizApp' #sets path to location of csv files
@@ -32,9 +35,7 @@ else: #no category chosen
     for filename in all_files: #for each file
         with open(filename, newline='') as f: #open the csv
             reader = csv.reader(f)
-            for row in reader: #loop through each row and make a list of questions
-                question = [row[0],row[1]] #get each question and answer as a list
-                questionList.append(question) #nest each list into 1 over all list
+            createQList(reader) #send csv to function to be made into a list
 
 #print a description of how the app works
 print("Welcome to the quiz!\n")
