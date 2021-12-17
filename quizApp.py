@@ -8,6 +8,13 @@ import glob
 quizCategory = "General Knowledge"
 questionList = []
 
+#correct check
+def mark(panswer, canswer): #this function evluates if the answer is correct 
+    if canswer.lower() == panswer.lower():  #if correct answer is same as users answer
+        return "correct"
+    else:
+        return "incorrect"
+
  #check if there has been a category chosen
 if len(sys.argv) > 1 : #category chosen
     quizCategory = str(sys.argv[1]) #record the name of the category
@@ -28,12 +35,6 @@ else: #no category chosen
             for row in reader: #loop through each row and make a list of questions
                 question = [row[0],row[1]] #get each question and answer as a list
                 questionList.append(question) #nest each list into 1 over all list
-
-def mark(panswer, canswer): #this function evluates if the answer is correct 
-    if canswer.lower() == panswer.lower():  #if correct answer is same as users answer
-        return "correct"
-    else:
-        return "incorrect"
 
 #print a description of how the app works
 print("Welcome to the quiz!\n")
