@@ -6,6 +6,7 @@ import glob
 quizCategory = ""
 questionList = []
 
+
 #print a description of how the app works
 print("Welcome to the quiz!\n")
 
@@ -13,6 +14,7 @@ path = r'C:\Users\danie\Desktop\Python training\quizApp' #sets path to location 
 all_files = glob.glob(path + "/*.csv") #creates list of csv files
 
 print(f"There are {len(all_files)} categorys to choose from, they are:")
+
 
 for file in all_files:
     print(file[47:].replace(".csv", "")) #prints the names of the .csv minus the directory path
@@ -34,20 +36,19 @@ else: #if not
     for filename in all_files: #take all available questions
         with open(filename, newline='') as f: #open the csv
             reader = csv.reader(f)
+
             createQuestionList(reader) #turn them into a question list
 
 numberOfQuestions = input(f"There are {len(questionList)} questions in that category, how many {quizCategory} questions would you like to do? ")
 print(f"You have chosen to do {numberOfQuestions} in the {quizCategory} category. Good Luck!\n")
-
-
 
 def mark(panswer, canswer): #this function evluates if the answer is correct 
     if canswer.lower() == panswer.lower():  #if correct answer is same as users answer
         return "Correct"
     else:
         return "Incorrect"
-
-shuffledQuestions = random.sample(questionList, int(numberOfQuestions)) #creates a randomised list from all questions in questionList
+      
+shuffledQuestions = random.sample(questionList, int(numberOfQuestions)) #selects a random number of questions chosen by numberOfQuestions variable 
 
 right = 0
 
