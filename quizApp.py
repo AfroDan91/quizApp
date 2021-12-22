@@ -17,7 +17,8 @@ print(f"There are {len(all_files)} categories to choose from, they are:")
 
 
 for file in all_files:
-    print(file[47:].replace(".csv", "")) #prints the names of the .csv minus the directory path
+    print(file.replace(".csv", "").replace(path + "\\", "")) #prints the names of the .csv minus the directory path
+    
 print("General Knowledge")
 quizCategory = input("to choose a category type its name here -> ")
 
