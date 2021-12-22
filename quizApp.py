@@ -18,7 +18,7 @@ print(f"There are {len(all_files)} categories to choose from, they are:")
 
 for file in all_files:
     print(file.replace(".csv", "").replace(path + "\\", "")) #prints the names of the .csv minus the directory path
-    
+
 print("General Knowledge")
 quizCategory = input("to choose a category type its name here -> ")
 
@@ -27,8 +27,8 @@ def createQuestionList(reader): #creates a question list from selected .csv
         question = [row[0],row[1]] #get each question and answer as a list
         questionList.append(question) #nest each list into 1 over all list
 
-#check if chosen category is in all files
-if quizCategory in str(all_files): #if it is
+#check if chosen category has a .csv file
+if quizCategory in all_files: #if it is
     with open(f"{quizCategory}.csv", newline='') as f: # open the csv of the chosen category
         reader = csv.reader(f)
         createQuestionList(reader) #turn it into a question list
