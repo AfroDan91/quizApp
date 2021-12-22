@@ -13,8 +13,7 @@ print("Welcome to the quiz!\n")
 path = r'C:\Users\danie\Desktop\Python training\quizApp' #sets path to location of csv files
 all_files = glob.glob(path + "/*.csv") #creates list of csv files
 
-print(f"There are {len(all_files)} categories to choose from, they are:")
-
+print(f"There are {len(all_files)+1} categories to choose from, they are:")
 
 for file in all_files:
     print(file.replace(".csv", "").replace(path + "\\", "")) #prints the names of the .csv minus the directory path
